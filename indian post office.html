@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian Post Office - Premium Postal Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #D22630;
+            --secondary: #FFC72C;
+            --accent: #FFFFFF;
+            --light: #FFF9E5;
+            --dark: #2E2E2E;
+            --gray: #5A5A5A;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark);
+            background: linear-gradient(135deg, #FFF9F9 0%, #FFF0F0 100%);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 60px;
+            margin-right: 15px;
+            animation: pulse 2s infinite;
+        }
+
+        .logo h1 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--primary);
+            font-size: 28px;
+            font-weight: 800;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 18px;
+            position: relative;
+            padding: 5px 0;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .cta-button {
+            background: var(--primary);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(210, 38, 48, 0.3);
+            border: 2px solid var(--primary);
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(210, 38, 48, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 180px 0 100px;
+            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.95)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23D22630" opacity="0.05"/></svg>');
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 650px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: var(--primary);
+            line-height: 1.2;
+            animation: fadeInDown 1s ease;
+        }
+
+        .hero h2 span {
+            color: var(--secondary);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 30px;
+            color: var(--gray);
+            animation: fadeInUp 1s ease 0.2s forwards;
+            opacity: 0;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            animation: fadeInUp 1s ease 0.4s forwards;
+            opacity: 0;
+        }
+
+        .hero-image {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50%;
+            max-width: 600px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+            background: var(--light);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 20px auto 0;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            border-top: 4px solid var(--primary);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(210, 38, 48, 0.15);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(210, 38, 48, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 32px;
+            color: var(--primary);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .service-card p {
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+
+        /* Ad Spaces */
+        .ad-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #D22630 0%, #A81C24 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .ad-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .ad-container h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .ad-container p {
+            font-size: 1.25rem;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .ad-spaces {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .ad-box {
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .ad-box:hover {
+            transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .ad-box i {
+            font-size: 40px;
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+
+        .ad-box h4 {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+        }
+
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .about-container {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--primary), #A81C24);
+            opacity: 0.2;
+            z-index: 1;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .about-content {
+            flex: 1;
+        }
+
+        .about-content h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 25px;
+        }
+
+        .about-content p {
+            margin-bottom: 20px;
+            color: var(--gray);
+        }
+
+        .features {
+            margin-top: 30px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(210, 38, 48, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            color: var(--primary);
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #D22630 0%, #A81C24 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .stat-box {
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .stat-box i {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+
+        .stat-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            background: var(--light);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+        }
+
+        .contact-info {
+            padding-right: 20px;
+        }
+
+        .contact-info h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 25px;
+        }
+
+        .contact-info p {
+            color: var(--gray);
+            margin-bottom: 30px;
+        }
+
+        .contact-details {
+            margin-top: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+
+        .contact-item i {
+            font-size: 24px;
+            color: var(--primary);
+            margin-right: 15px;
+            margin-top: 5px;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border-top: 4px solid var(--primary);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 70px 0 20px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-col h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--secondary);
+        }
+
+        .footer-col p {
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: background 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--secondary);
+            color: var(--primary);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 14px;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(-50%) translateX(0);
+            }
+            50% {
+                transform: translateY(-53%) translateX(10px);
+            }
+            100% {
+                transform: translateY(-50%) translateX(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero {
+                padding: 150px 0 80px;
+            }
+            .hero h2 {
+                font-size: 2.8rem;
+            }
+            .hero-image {
+                width: 45%;
+            }
+            .about-container {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+            .hero {
+                text-align: center;
+                padding: 140px 0 60px;
+            }
+            .hero-content {
+                margin: 0 auto;
+            }
+            .hero-buttons {
+                justify-content: center;
+            }
+            .hero-image {
+                position: relative;
+                width: 100%;
+                max-width: 500px;
+                margin: 50px auto 0;
+                top: 0;
+                transform: none;
+            }
+            .ad-box {
+                width: 150px;
+                height: 150px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+            .hero p {
+                font-size: 1.1rem;
+            }
+            .hero-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            .service-card {
+                padding: 25px 20px;
+            }
+            .ad-box {
+                width: 130px;
+                height: 130px;
+            }
+            .contact-form {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%23D22630'/><path d='M35,30 L65,30 L65,70 L35,70 Z' fill='white'/><circle cx='50' cy='50' r='15' fill='%23FFC72C'/></svg>" alt="Indian Post Office Logo">
+                <h1>India <span>Post</span></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#ads">Advertise</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#" class="cta-button">Track Package</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h2>India's Most Trusted <span>Postal Service</span></h2>
+                <p>Connecting the nation since 1854 with reliable, efficient, and affordable postal services. Serving every corner of India with pride.</p>
+                <div class="hero-buttons">
+                    <a href="#services" class="cta-button">Our Services</a>
+                    <a href="#contact" class="cta-button" style="background: var(--secondary); border-color: var(--secondary); color: var(--dark);">Contact Us</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 400'><rect width='600' height='400' fill='%23FFF9F9'/><path d='M150,150 L450,150 L450,300 L150,300 Z' fill='%23D22630' opacity='0.1'/><path d='M200,100 L400,100 L400,250 L200,250 Z' fill='%23D22630' opacity='0.2'/><circle cx='300' cy='200' r='80' fill='%23FFC72C' opacity='0.7'/><path d='M250,180 L350,180 L350,220 L250,220 Z' fill='white'/><path d='M280,140 L320,140 L320,160 L280,160 Z' fill='%23D22630' opacity='0.8'/></svg>" alt="Postal Service Illustration">
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <p>Comprehensive postal solutions for all your needs</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Mail Services</h3>
+                    <p>Domestic and international mail delivery with tracking and insurance options.</p>
+                    <a href="#" class="cta-button" style="padding: 8px 20px; font-size: 14px;">Learn More</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <h3>Parcel Delivery</h3>
+                    <p>Fast and secure parcel delivery services across India and worldwide.</p>
+                    <a href="#" class="cta-button" style="padding: 8px 20px; font-size: 14px;">Learn More</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-money-check-alt"></i>
+                    </div>
+                    <h3>Financial Services</h3>
+                    <p>Postal savings accounts, money orders, and other financial solutions.</p>
+                    <a href="#" class="cta-button" style="padding: 8px 20px; font-size: 14px;">Learn More</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-passport"></i>
+                    </div>
+                    <h3>Government Services</h3>
+                    <p>Passport applications, Aadhaar services, and other government schemes.</p>
+                    <a href="#" class="cta-button" style="padding: 8px 20px; font-size: 14px;">Learn More</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <h3>Special Delivery</h3>
+                    <p>Express and premium delivery options for time-sensitive shipments.</p>
+                    <a href="#" class="cta-button" style="padding: 8px 20px; font-size: 14px;">Learn More</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <h3>Customer Support</h3>
+                    <p>24/7 customer support and package tracking assistance.</p>
+                    <a href="#" class="cta-button" style="padding: 8px 20px; font-size: 14px;">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <i class="fas fa-building"></i>
+                    <div class="stat-number">154,000+</div>
+                    <h3>Post Offices</h3>
+                </div>
+                <div class="stat-box">
+                    <i class="fas fa-users"></i>
+                    <div class="stat-number">500M+</div>
+                    <h3>Customers Served</h3>
+                </div>
+                <div class="stat-box">
+                    <i class="fas fa-truck"></i>
+                    <div class="stat-number">12M+</div>
+                    <h3>Daily Deliveries</h3>
+                </div>
+                <div class="stat-box">
+                    <i class="fas fa-history"></i>
+                    <div class="stat-number">169</div>
+                    <h3>Years of Service</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ad Spaces Section -->
+    <section class="ad-section" id="ads">
+        <div class="container">
+            <div class="ad-container">
+                <h2>Advertise With India Post</h2>
+                <p>Maximize your reach with our premium advertising spaces. Connect with millions of customers across India through our trusted postal network.</p>
+                <a href="#contact" class="cta-button" style="background: var(--secondary); border-color: var(--secondary); color: var(--dark);">Book Ad Space</a>
+                
+                <div class="ad-spaces">
+                    <div class="ad-box">
+                        <i class="fas fa-envelope-open-text"></i>
+                        <h4>Mail Inserts</h4>
+                        <p>Reach directly</p>
+                    </div>
+                    <div class="ad-box">
+                        <i class="fas fa-newspaper"></i>
+                        <h4>Newsletter</h4>
+                        <p>Monthly exposure</p>
+                    </div>
+                    <div class="ad-box">
+                        <i class="fas fa-desktop"></i>
+                        <h4>Website Ads</h4>
+                        <p>High visibility</p>
+                    </div>
+                    <div class="ad-box">
+                        <i class="fas fa-store"></i>
+                        <h4>Branch Ads</h4>
+                        <p>Local presence</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About India Post</h2>
+                <p>Trusted postal services since 1854</p>
+            </div>
+            <div class="about-container">
+                <div class="about-image">
+                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 400'><rect width='600' height='400' fill='%23f0f0f0'/><path d='M100,100 L500,100 L500,300 L100,300 Z' fill='%23D22630' opacity='0.1'/><rect x='150' y='150' width='300' height='150' fill='%23D22630' opacity='0.2'/><rect x='200' y='120' width='200' height='40' fill='%23FFC72C' opacity='0.7'/><circle cx='300' cy='230' r='40' fill='%23D22630' opacity='0.5'/><path d='M280,210 L320,210 L320,250 L280,250 Z' fill='white'/></svg>" alt="Post Office Building">
+                </div>
+                <div class="about-content">
+                    <h2>Connecting India for Over a Century</h2>
+                    <p>India Post has been serving the nation since 1854, providing reliable postal services to millions of customers across the country. With a rich heritage and commitment to excellence, we continue to evolve to meet the changing needs of our customers.</p>
+                    <p>As a key part of India's communication infrastructure, we pride ourselves on our extensive network that reaches even the most remote areas of the country.</p>
+                    
+                    <div class="features">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-network-wired"></i>
+                            </div>
+                            <div>
+                                <h3>Extensive Network</h3>
+                                <p>Over 154,000 post offices across India</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-truck"></i>
+                            </div>
+                            <div>
+                                <h3>Nationwide Delivery</h3>
+                                <p>Serving every pin code in India</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div>
+                                <h3>Secure Services</h3>
+                                <p>Government-backed security and reliability</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <p>Reach out for any inquiries or assistance</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h2>Get In Touch</h2>
+                    <p>Visit your nearest post office or contact us for any postal services, financial services, or advertising opportunities. Our team is ready to assist you.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h3>Headquarters</h3>
+                                <p>Dak Bhavan, Sansad Marg<br>New Delhi, India 110001</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone-alt"></i>
+                            <div>
+                                <h3>Customer Care</h3>
+                                <p>1800 266 6868</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h3>Email Address</h3>
+                                <p>customercare@indiapost.gov.in</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <h3>Working Hours</h3>
+                                <p>Monday - Saturday: 9:00 AM - 6:00 PM<br>Sunday: 10:00 AM - 2:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h2>Send a Message</h2>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" placeholder="Enter your name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" placeholder="Enter your email">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" placeholder="Enter your phone number">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" placeholder="How can we help you?"></textarea>
+                        </div>
+                        <button type="submit" class="cta-button" style="width: 100%; text-align: center;">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>India Post</h3>
+                    <p>Providing reliable postal services across India since 1854. Connecting people, businesses, and communities.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#ads">Advertise</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#">Find Post Office</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Our Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Mail Services</a></li>
+                        <li><a href="#">Parcel Delivery</a></li>
+                        <li><a href="#">Financial Services</a></li>
+                        <li><a href="#">Passport Services</a></li>
+                        <li><a href="#">Speed Post</a></li>
+                        <li><a href="#">Business Solutions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Advertise With Us</h3>
+                    <p>Reach millions of customers through our advertising solutions. Contact us for partnership opportunities.</p>
+                    <a href="#contact" class="cta-button" style="display: block; text-align: center; margin-top: 15px;">Get Started</a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 India Post. All Rights Reserved. | Ministry of Communications, Government of India</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple animations and interactions
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Service card animation on scroll
+            const serviceCards = document.querySelectorAll('.service-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = 'fadeInUp 0.8s ease forwards';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            serviceCards.forEach(card => {
+                card.style.opacity = '0';
+                observer.observe(card);
+            });
+
+            // Form submission
+            const contactForm = document.querySelector('.contact-form form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Thank you for your message! We will get back to you soon.');
+                    contactForm.reset();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
